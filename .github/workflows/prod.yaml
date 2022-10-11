@@ -49,4 +49,4 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/ubuntu/pages/ && run ./server/pages
+            pkill pages && cd /home/ubuntu/pages/ && nohup ./server/pages &
