@@ -12,11 +12,6 @@ func main() {
 	r.LoadHTMLGlob("tpls/*")
 	r.Static("/static/", "static")
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
 	r.GET("/index", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "lix7",
