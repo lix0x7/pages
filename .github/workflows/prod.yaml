@@ -51,4 +51,4 @@ jobs:
           script: |
             sudo pkill pages
             cd /home/ubuntu/pages/
-            sudo nohup ./server/pages 2>&1 > log.log < /dev/null &
+            sudo nohup ./server/pages > log.log 2>&1 &
