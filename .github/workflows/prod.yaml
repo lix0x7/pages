@@ -22,6 +22,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.REMOTE_HOST }}
+          username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             mkdir -p /usr/app/pages/
