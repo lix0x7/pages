@@ -25,7 +25,7 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            mkdir -p /usr/ubuntu/pages/
+            mkdir -p /home/ubuntu/pages/
       # 部署到腾讯云服务器
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.0.7
@@ -41,7 +41,7 @@ jobs:
           # 腾讯云默认用户名为root
           REMOTE_USER: "ubuntu"
           # 目标目录
-          TARGET: "/usr/ubuntu/pages/"
+          TARGET: "/home/ubuntu/pages/"
       - name: run exec file
         uses: appleboy/ssh-action@v0.1.5
         with:
@@ -49,4 +49,4 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /usr/ubuntu/pages/ && run ./server/pages
+            cd /home/ubuntu/pages/ && run ./server/pages
