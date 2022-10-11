@@ -49,4 +49,6 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo pkill pages && cd /home/ubuntu/pages/ && (sudo nohup ./server/pages &) && exit
+            sudo pkill pages
+            cd /home/ubuntu/pages/
+            sudo nohup ./server/pages 2>&1 > log.log &
