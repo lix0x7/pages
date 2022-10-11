@@ -20,8 +20,8 @@ jobs:
         run: cd server && go build
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v0.1.5
-        host: ${{secrets.REMOTE_HOST}}
-        key: ${{secrets.SSH_PRIVATE_KEY}}
+        host: ${{ secrets.REMOTE_HOST }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           mkdir -p /usr/app/pages/
       # 部署到腾讯云服务器
