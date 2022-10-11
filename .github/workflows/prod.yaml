@@ -18,14 +18,14 @@ jobs:
           go-version: 1.18
       - name: build
         run: cd server && go build
-      - name: SSH Remote Commands
+      - name: init env
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            mkdir -p /usr/app/pages/
+            mkdir -p /usr/ubuntu/pages/
       # 部署到腾讯云服务器
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.0.7
@@ -41,4 +41,12 @@ jobs:
           # 腾讯云默认用户名为root
           REMOTE_USER: "ubuntu"
           # 目标目录
-          TARGET: "/usr/app/pages/"
+          TARGET: "/usr/ubuntu/pages/"
+      - name: run exec file
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: "ubuntu"
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /usr/ubuntu/pages/ && run ./server/pages
